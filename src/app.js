@@ -5,44 +5,57 @@ import "./style.css";
 import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
 
-window.onload = function() {
-  //write your code here
-  let pronoun = ['the', 'our'];
-  let adj = ['great', 'big'];
-  let noun = ['jogger', 'racoon'];
+function contarYMostrar(texto) {
 
-  for (let index = 0; index < pronoun.length; index++) {
-  for (let second = 0; second < adj.length; second++) {
-  for (let third = 0; third < noun.length; third++) {
-    
-    const dominio = pronoun[index] + adj[second] + noun[third] + ".com";
-    
-    console.log(dominio);
-     
-    document.body.innerHTML += dominio + "<br>";
-    
-    
-  } 
-    
-  }
+  const contenedor = document.getElementById("dominio");
+
+  if (typeof texto !== "string") {
+    contenedor.innerHTML = "Error: debes pasar un texto";
+    return;
   }
 
+  const conteo = {};
 
-};
+  texto.toLowerCase().split("").forEach(letra => {
+    if (conteo[letra]) {
+      conteo[letra]++;
+    } else {
+      conteo[letra] = 1;
+    }
+  });
+
+  contenedor.innerHTML = JSON.stringify(conteo);
+}
 
 
-// forEach
-  let pronoun = ['the', 'our'];
-  let adj = ['great', 'big'];
-  let noun = ['jogger', 'racoon'];
+contarYMostrar("a b c a f B g");
 
-  pronoun.forEach(index => {
-   adj.forEach(second => {
-    noun.forEach(third => {
-      console.log(index + second + third + ".com");
-      
-  
-  })
-  })
-  })
+/* codigo de Milton Compañero
+/*const contarLetras = (string) => {
+const resultadoContarLetras = {}
 
+if (typeof string !== "string"){
+return ` Error: Este elemento no es valido, debe de ser un string`
+}
+
+const sinEspacios = string.replaceAll(" ", "")
+const parametroLimpio = sinEspacios.split("")
+
+
+parametroLimpio.forEach((letter) => {
+
+if (resultadoContarLetras[letter]) {
+resultadoContarLetras[letter] = resultadoContarLetras[letter] + 1;
+return;
+}
+resultadoContarLetras[letter] = 1;
+});
+
+return resultadoContarLetras
+}
+
+console.log(contarLetras(`abcac`))
+console.log(contarLetras(`abcac abc`))
+console.log(contarLetras(213))
+console.log(contarLetras({}))
+console.log(contarLetras([]))
