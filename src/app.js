@@ -30,32 +30,3 @@ function contarYMostrar(texto) {
 
 contarYMostrar("a b c a f B g");
 
-/* codigo de Milton Compañero
-/*const contarLetras = (string) => {
-const resultadoContarLetras = {}
-
-if (typeof string !== "string"){
-return ` Error: Este elemento no es valido, debe de ser un string`
-}
-
-const sinEspacios = string.replaceAll(" ", "")
-const parametroLimpio = sinEspacios.split("")
-
-
-parametroLimpio.forEach((letter) => {
-
-if (resultadoContarLetras[letter]) {
-resultadoContarLetras[letter] = resultadoContarLetras[letter] + 1;
-return;
-}
-resultadoContarLetras[letter] = 1;
-});
-
-return resultadoContarLetras
-}
-
-console.log(contarLetras(`abcac`))
-console.log(contarLetras(`abcac abc`))
-console.log(contarLetras(213))
-console.log(contarLetras({}))
-console.log(contarLetras([]))
